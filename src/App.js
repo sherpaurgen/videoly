@@ -19,21 +19,24 @@ export default class App extends Component {
     const tmpcounters = this.state.counters.filter((c) => c.id !== counterId);
     this.setState({ counters: tmpcounters });
   };
+
   handleDecrement = (counter) => {
     const countertemp = [...this.state.counters];
     //const index = countertemp.indexOf(counter);
     const index = countertemp.map((x) => x.id).indexOf(counter.id)
-
     countertemp[index] = { ...counter };
 
-    countertemp[index].value--;
+    if (countertemp[index].value > 0) {
+      countertemp[index].value--;
+    } else { }
+
     this.setState({ counters: countertemp });
   };
 
   handleIncrement = (counter) => {
     const countertemp = [...this.state.counters];
-    console.log("handle increment counter temp vlaue => ", counter)
-    const index = countertemp.indexOf(counter);
+    //const index = countertemp.indexOf(counter);
+    const index = countertemp.map((x) => x.id).indexOf(counter.id)
     countertemp[index] = { ...counter };
 
     countertemp[index].value++;
