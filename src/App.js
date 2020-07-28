@@ -21,7 +21,8 @@ export default class App extends Component {
   };
   handleDecrement = (counter) => {
     const countertemp = [...this.state.counters];
-    const index = countertemp.indexOf(counter);
+    //const index = countertemp.indexOf(counter);
+    const index = countertemp.map((x) => x.id).indexOf(counter.id)
 
     countertemp[index] = { ...counter };
 
@@ -33,7 +34,6 @@ export default class App extends Component {
     const countertemp = [...this.state.counters];
     console.log("handle increment counter temp vlaue => ", counter)
     const index = countertemp.indexOf(counter);
-
     countertemp[index] = { ...counter };
 
     countertemp[index].value++;
